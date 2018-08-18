@@ -1,0 +1,48 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class = "col-sm-12 panel title-header text-center">
+    <h2>Edit Disc</h2>
+</div>
+
+<div class = "row">
+    <div class = "col-sm-1"></div>
+    <div class = "col-sm-10">
+        <form action="{{url_for('editDisc', collection_id = collection.id, disc_id = disc.id)}}" method = "post">
+            <fieldset>
+                <legend>Update Disc Information: <small>(leave blank to remain the same)</small></legend>
+                <div class = "form-group">
+                    <label for="mfr">Manufacturer</label>
+                    <input type = "text" class = "form-control input-field" name = "mfr" placeholder="{{disc.mfr}}">
+                    <label for="name">Disc Name</label>
+                    <input type = "text" class = "form-control input-field" name = "name" placeholder="{{disc.name}}">
+                    <label for="plastic">Plastic</label>
+                    <input type = "text" class = "form-control input-field" name = "plastic" placeholder="{{disc.plastic}}">
+                    <label for="color">Color</label>
+                    <input type = "text" class = "form-control input-field" name = "color" placeholder="{{disc.color}}">
+                    <label for="name">Weight <small>(grams)</small></label>
+                    <input type = "text" class = "form-control input-field" name = "weight" placeholder="{{disc.weight}}">
+                </div>
+                <div class = "row">
+                <div class = "col-sm-6">
+                    <div class = "btn-group">
+                        <button type = "submit" class = "btn btn-primary" name = "update">
+                            Update
+                        </button>
+                        <a class = "btn btn-default" href = "{{url_for('showCollection', collection_id = collection.id)}}">
+                            Cancel
+                        </a>
+                    </div>
+                </div>
+                <div class = "col-sm-6 text-right">
+                    <button type = "reset" class = "btn btn-info">Reset</button>
+                </div>
+            </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class = "col-sm-1"></div>
+</div>
+
+{% endblock content %}

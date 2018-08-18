@@ -1,0 +1,48 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class = "col-sm-12 panel title-header-delete text-center">
+    <h2>Delete Disc</h2>
+</div>
+
+<div class = "row">
+    <div class = "col-sm-2"></div>
+    <div class = "col-sm-8 text-center">
+        <table class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th class = "text-center">Manufacturer</th>
+                    <th class = "text-center">Name</th>
+                    <th class = "text-center">Plastic</th>
+                    <th class = "text-center">Color</th>
+                    <th class = "text-center">Weight</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class = "text-center">
+                    <td>{{ disc.mfr }}</td>
+                    <td>{{ disc.name }}</td>
+                    <td>{{ disc.plastic }}</td>
+                    <td>{{ disc.color }}</td>
+                    <td>{{ disc.weight }}g</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form action="{{url_for('deleteDisc', collection_id = collection_id, disc_id = disc.id)}}" method = "post">
+            Are you sure you want to delete this disc?<br><br>
+            <div class = "btn-group-vertical">
+                <button type = "submit" class = "btn btn-danger" name = "delete">
+                    Yes, I want to delete this disc
+                </button>
+                <a class = "btn btn-default" href = "{{url_for('showCollection', collection_id = collection_id)}}">
+                    No, take me back to my collection
+                </a>
+            </div>
+        </form>
+    </div>
+    <div class = "col-sm-2"></div>
+</div>
+
+{% endblock content %}

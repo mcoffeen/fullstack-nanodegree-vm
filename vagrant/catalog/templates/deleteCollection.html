@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class = "col-sm-12 panel title-header-delete text-center">
+    <h2>Delete Collection</h2>
+</div>
+
+<div class = "row">
+    <div class = "col-sm-1"></div>
+    <div class = "col-sm-10 text-center">
+        <form action="{{url_for('deleteCollection', collection_id = collection.id)}}" method = "post">
+            Are you sure you want to delete {{collection.name}}?<br><br>
+            <div class = "btn-group-vertical">
+                <button type = "submit" class = "btn btn-danger" name = "delete">
+                    Yes, I want to delete my collection
+                </button>
+                <a class = "btn btn-default" href = "{{url_for('showCollection', collection_id = collection.id)}}">
+                    No, take me back to my collection
+                </a>
+            </div>
+        </form>
+    </div>
+    <div class = "col-sm-1"></div>
+</div>
+
+
+{% endblock content %}

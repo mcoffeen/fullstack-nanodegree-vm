@@ -1,0 +1,254 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+
+{% if 'username' in login_session and creator.id == login_session['user_id'] %}
+    <div class = "row panel title-header text-center">
+        <div class = "col-sm-12 collection-title-name profile">
+            <h2>{{collection.name}}</h2>
+
+            <img src = "{{login_session['picture']}}">
+        </div>
+    </div>
+{% else %}
+    <div class = "col-sm-12 panel title-header text-center">
+        <h2>{{collection.name}}</h2>
+    </div>
+{% endif %}
+
+<div class = "row text-center">
+    {% if 'username' in login_session and creator.id == login_session['user_id'] %}
+        <div class = "btn-group edit-delete-add">
+            <a class = "btn btn-default btn-sm" href = "{{url_for('editCollection', collection_id = collection.id)}}"><span class = "glyphicon glyphicon-pencil"></span> Edit Collection</a>
+            <a class = "btn btn-danger btn-sm" href = "{{url_for('deleteCollection', collection_id = collection.id)}}"><span class = "glyphicon glyphicon-remove-circle"></span> Delete Collection</a>
+            <a class = "btn btn-success btn-sm" href = "{{url_for('newDisc', collection_id = collection.id)}}">
+            <span class = "glyphicon glyphicon-plus"></span> Add New Disc</a>
+        </div>
+    {% else %}
+        <div class = "small edit-delete-add">
+            Note: This collection cannot be edited because you are not the creator
+        </div>
+    {% endif %}
+</div>
+
+
+
+    {% if 'Distance Driver' in discTypes %}
+    <div class = "row">
+        <div class = "col-sm-2"></div>
+        <div class = "col-sm-8 text-center panel disc-type-header">
+            <div class = "panel-body">
+                <strong>Distance Driver</strong>
+            </div>
+        </div>
+        <div class = "col-sm-2"></div>
+    </div>
+
+    <div class = "row">
+        <div class = "col-sm-2"></div>
+        <div class = "col-sm-8 text-center">
+            <table class="table table-hover table-condensed disc-table">
+                <thead>
+                    <tr>
+                        <th class = "text-center">Manufacturer</th>
+                        <th class = "text-center">Name</th>
+                        <th class = "text-center">Plastic</th>
+                        <th class = "text-center">Color</th>
+                        <th class = "text-center">Weight</th>
+                        {% if 'username' in login_session and creator.id == login_session['user_id'] %}
+                            <th class = "text-center">Controls</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for disc in discs %}
+                        {% if disc.discType == 'Distance Driver' %}
+                            <tr class = "text-center">
+                                <td>{{ disc.mfr }}</td>
+                                <td>{{ disc.name }}</td>
+                                <td>{{ disc.plastic }}</td>
+                                <td>{{ disc.color }}</td>
+                                <td>{{ disc.weight }}{% if disc.weight %}g{% endif %}</td>
+                                {% if 'username' in login_session and creator.id == login_session['user_id'] %}
+                                    <td>
+                                        <div class = "btn-group">
+                                            <a class = "btn btn-default btn-xs" href = "{{url_for('editDisc', collection_id = collection.id, disc_id = disc.id)}}">Edit</a>
+                                            <a class = "btn btn-danger btn-xs" href = "{{url_for('deleteDisc', collection_id = collection.id, disc_id = disc.id)}}">Delete</a>
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class = "col-sm-2"></div>
+    </div>
+    {% endif %}
+
+    {% if 'Fairway Driver' in discTypes %}
+    <div class = "row">
+        <div class = "col-sm-2"></div>
+        <div class = "col-sm-8 text-center panel disc-type-header">
+            <div class = "panel-body">
+                <strong>Fairway Driver</strong>
+            </div>
+        </div>
+        <div class = "col-sm-2"></div>
+    </div>
+
+    <div class = "row">
+        <div class = "col-sm-2"></div>
+        <div class = "col-sm-8 text-center disc-type">
+            <table class="table table-hover table-condensed disc-table">
+                <thead>
+                    <tr>
+                        <th class = "text-center">Manufacturer</th>
+                        <th class = "text-center">Name</th>
+                        <th class = "text-center">Plastic</th>
+                        <th class = "text-center">Color</th>
+                        <th class = "text-center">Weight</th>
+                        {% if 'username' in login_session and creator.id == login_session['user_id'] %}
+                            <th class = "text-center">Controls</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for disc in discs %}
+                        {% if disc.discType == 'Fairway Driver' %}
+                            <tr class = "text-center">
+                                <td>{{ disc.mfr }}</td>
+                                <td>{{ disc.name }}</td>
+                                <td>{{ disc.plastic }}</td>
+                                <td>{{ disc.color }}</td>
+                                <td>{{ disc.weight }}{% if disc.weight %}g{% endif %}</td>
+                                {% if 'username' in login_session and creator.id == login_session['user_id'] %}
+                                    <td>
+                                        <div class = "btn-group">
+                                            <a class = "btn btn-default btn-xs" href = "{{url_for('editDisc', collection_id = collection.id, disc_id = disc.id)}}">Edit</a>
+                                            <a class = "btn btn-danger btn-xs" href = "{{url_for('deleteDisc', collection_id = collection.id, disc_id = disc.id)}}">Delete</a>
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class = "col-sm-2"></div>
+    </div>
+    {% endif %}
+
+    {% if 'Mid-Range' in discTypes %}
+    <div class = "row">
+        <div class = "col-sm-2"></div>
+        <div class = "col-sm-8 text-center panel disc-type-header">
+            <div class = "panel-body">
+                <strong>Mid-Range</strong>
+            </div>
+        </div>
+        <div class = "col-sm-2"></div>
+    </div>
+
+    <div class = "row">
+        <div class = "col-sm-2"></div>
+        <div class = "col-sm-8 text-center disc-type">
+            <table class="table table-hover table-condensed disc-table">
+                <thead>
+                    <tr>
+                        <th class = "text-center">Manufacturer</th>
+                        <th class = "text-center">Name</th>
+                        <th class = "text-center">Plastic</th>
+                        <th class = "text-center">Color</th>
+                        <th class = "text-center">Weight</th>
+                        {% if 'username' in login_session and creator.id == login_session['user_id'] %}
+                            <th class = "text-center">Controls</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for disc in discs %}
+                        {% if disc.discType == 'Mid-Range' %}
+                            <tr class = "text-center">
+                                <td>{{ disc.mfr }}</td>
+                                <td>{{ disc.name }}</td>
+                                <td>{{ disc.plastic }}</td>
+                                <td>{{ disc.color }}</td>
+                                <td>{{ disc.weight }}{% if disc.weight %}g{% endif %}</td>
+                                {% if 'username' in login_session and creator.id == login_session['user_id'] %}
+                                    <td>
+                                        <div class = "btn-group">
+                                            <a class = "btn btn-default btn-xs" href = "{{url_for('editDisc', collection_id = collection.id, disc_id = disc.id)}}">Edit</a>
+                                            <a class = "btn btn-danger btn-xs" href = "{{url_for('deleteDisc', collection_id = collection.id, disc_id = disc.id)}}">Delete</a>
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class = "col-sm-2"></div>
+    </div>
+    {% endif %}
+
+    {% if 'Putt and Approach' in discTypes %}
+    <div class = "row">
+        <div class = "col-sm-2"></div>
+        <div class = "col-sm-8 text-center panel disc-type-header">
+            <div class = "panel-body">
+                <strong>Putt and Approach</strong>
+            </div>
+        </div>
+        <div class = "col-sm-2"></div>
+    </div>
+
+    <div class = "row">
+        <div class = "col-sm-2"></div>
+        <div class = "col-sm-8 text-center disc-type">
+            <table class="table table-hover table-condensed disc-table">
+                <thead>
+                    <tr>
+                        <th class = "text-center">Manufacturer</th>
+                        <th class = "text-center">Name</th>
+                        <th class = "text-center">Plastic</th>
+                        <th class = "text-center">Color</th>
+                        <th class = "text-center">Weight</th>
+                        {% if 'username' in login_session and creator.id == login_session['user_id'] %}
+                            <th class = "text-center">Controls</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for disc in discs %}
+                        {% if disc.discType == 'Putt and Approach' %}
+                            <tr class = "text-center">
+                                <td>{{ disc.mfr }}</td>
+                                <td>{{ disc.name }}</td>
+                                <td>{{ disc.plastic }}</td>
+                                <td>{{ disc.color }}</td>
+                                <td>{{ disc.weight }}{% if disc.weight %}g{% endif %}</td>
+                                {% if 'username' in login_session and creator.id == login_session['user_id'] %}
+                                    <td>
+                                        <div class = "btn-group">
+                                            <a class = "btn btn-default btn-xs" href = "{{url_for('editDisc', collection_id = collection.id, disc_id = disc.id)}}">Edit</a>
+                                            <a class = "btn btn-danger btn-xs" href = "{{url_for('deleteDisc', collection_id = collection.id, disc_id = disc.id)}}">Delete</a>
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    <div class = "col-sm-2"></div>
+    </div>
+
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class = "col-sm-12 panel title-header text-center">
+    <h2>Disc Golf Disc Collections</h2>
+</div>
+
+<div class = "row">
+<div class = "col-sm-12 text-center">
+    <div class = "btn-group edit-delete-add">
+        <a class = "btn btn-primary btn-sm" href = "{{url_for('newCollection')}}"><span class = "glyphicon glyphicon-plus"></span> Create New Collection</a>
+    </div>
+</div>
+</div>
+
+{% for collection in collections %}
+    <a href= "{{url_for('showCollection', collection_id = collection.id)}}">
+        <div class = "row">
+            <div class = "col-xs-1"></div>
+            <div class = "col-xs-10 panel collection-list">
+                <div class = "col-xs-10 text-left">
+                    <h4 class = "collection-name">{{collection.name}}</h4>
+                </div>
+                <div class = "col-xs-2 text-right">
+                    {% if 'username' in login_session and collection.user_id == login_session['user_id'] %}
+                        <div class = "profile-list">
+                            <img src = "{{login_session['picture']}}">
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class = "col-xs-1"></div>
+        </div>
+    </a>
+{% endfor %}
+
+{% endblock content%}

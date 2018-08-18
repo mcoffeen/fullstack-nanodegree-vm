@@ -1,0 +1,130 @@
+/*body {
+    background-image: url(https://images.all-free-download.com/images/graphicthumb/green_grass_04_hd_picture_166122.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}*/
+
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.header-button {
+    margin-top: 12px;
+}
+
+.header-button-home {
+    margin-top: 12px;
+    background-color: #367d37;
+}
+
+.flash {
+    margin-top: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color: #f3de8d;
+    text-decoration: none;
+}
+
+.title {
+    margin-top: 12px;
+}
+.edit-delete-add {
+    margin-bottom: 30px;
+}
+.input-field {
+    margin-bottom: 10px;
+}
+
+.title-header {
+    color: white;
+    background-color: #5bb85c;
+    padding: 20px;
+    margin: 10px 0;
+}
+
+.title-header-delete {
+    color: white;
+    background-color: #d9534f;
+    padding: 20px;
+    margin: 10px 0;
+}
+
+
+
+/*.jumbotron {
+    height: 300px;
+    margin: 30px 0;
+    background-image: url("/static/img/dg_banner-opaque.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}*/
+
+.disc-type-header {
+    background-color: #c6ecc6
+}
+
+.collection-title-name {
+    padding-top: 10px;
+}
+
+.collection-list {
+    background-color: #c6ecc6;
+    padding: 20px;
+    margin: 5px 0;
+}
+
+.collection-list:hover {
+    border-color: #39ac39;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.collection-name {
+    color: black;
+}
+
+.profile-list {
+    padding-top: 7px;
+    padding-right: 20px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+    text-align: center;
+    float:right;
+}
+.profile-list img {
+    width: 65px;
+    border-radius: 50%;
+}
+
+.profile {
+    padding-right: 20px;
+    margin-top: -10px;
+    text-align: center;
+    float:right;
+}
+.profile img {
+    width: 80px;
+    border-radius: 50%;
+}
+
+.main-header{
+    padding-top: 50px;
+}
+
+.disc-table {
+    margin-bottom: 60px;
+}
+
+@media only screen and (max-width: 767px) {
+    .header-button {
+        margin-top: 12px;
+        width: 100%;
+    }
+
+    .header-button-home {
+        margin-top: 12px;
+        background-color: #367d37;
+        width: 100%;
+    }
+}
